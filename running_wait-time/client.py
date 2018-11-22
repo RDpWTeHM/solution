@@ -16,7 +16,7 @@ from time import sleep
 
 
 def main():
-    missions = [#"localhost", "google.com", "myrpiserver.com", "bing.com",
+    missions = [#"localhost", "google.com", "bing.com", "github.com",
                 #"www.csdn.net",
                 "yahoo.com", "google.com", "www.jd.com", "www.baidu.com",
                 "www.amazon.com", "www.gitee.com",
