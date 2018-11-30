@@ -62,7 +62,7 @@ $
 
 ```shell
 $ pyton -c "import requests"
-## run "pip install --user requests" if needed
+## run "pip3 install --user requests" if needed
 $ 
 $ time ./unhang_console_by_Threads_SIGALRM.py 
 ```
@@ -134,6 +134,26 @@ $
 
 
 
+### `unhang_GUI_by_Threads.py`
+
+#### Usage
+
+```shell
+$ python -c "import tkinter"
+## "pip3 install --user tkinter" if needed
+## "requests" is also needed in this example
+$ 
+$ python ./unhang_GUI_by_Threads.py
+
+```
+
+#### Test Result
+
+- basic GUI demo
+
+  click button, show message on GUI.
+
+  ![python-GUI-button_and_showTextonEntry](res/python-GUI-button_and_showTextonEntry_Screencast_2018-11-30_1414.gif)
 
 
 
