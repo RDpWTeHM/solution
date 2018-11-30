@@ -79,13 +79,17 @@ def main():
     t.setDaemon(True)
     t.start()
     print("request pages result: \n", request_pages_result)
+    print("start the function which will cost lots of time.")
+
+    # 5 second later, run the register function which will show the result.
     signal.alarm(5)
 
+    # main thread keep doing things
     i = 0
     circle = ('|', '/', '-', '\\')
     while True:
         sleep(0.2)
-        print("\rprocessing... {}".format(circle[i]), end='')
+        print("\rmain thread processing... {}".format(circle[i]), end='')
         i = 0 if i == 3 else i + 1
 
 
