@@ -4,6 +4,7 @@
 from tkinter import *
 import tkinter as tk
 import sys
+import threading
 
 
 request_pages_result = {}
@@ -22,8 +23,13 @@ def clean():
 def show():
     print("Press Show button")
     entry.delete(0, tk.END)
-    entry.insert(0, "Button Clicked!")
+    entry.insert(0, "Processing request pages...")
+    t = threading.Thread(target=request_pages)
+    t.setDaemon(True)
+    t.start()
 
+
+def request_pages():
     global request_pages_result
     sites = ("https://www.baidu.com",
              "https://www.bing.com",
@@ -51,7 +57,6 @@ def show_request_pages_reslut():
 
 
 root = Tk()
-# root.pack()
 
 win = Frame(root)
 win.pack(expand=YES, fill=BOTH)

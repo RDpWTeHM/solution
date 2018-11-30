@@ -161,6 +161,15 @@ $ python ./unhang_GUI_by_Threads.py
 
   ![python-GUI_press-button_hang_example](res/python-GUI_press-button_hang_example.gif)
 
+- GUI unhang by threads demo
+
+  ![python-GUI_press-button_unhang_by_threads](res/python-GUI_press-button_unhang_by_threads.gif)
+
+
+
+
+
+
 
 
 
