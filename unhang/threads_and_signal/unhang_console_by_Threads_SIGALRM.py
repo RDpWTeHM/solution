@@ -21,6 +21,7 @@ import signal
 from time import sleep
 
 
+request_pages_result = {}
 prog_pid = os.getpid()
 if __debug__:
     print("[Debug] prog_pid <- os.getpid(): {}".format(prog_pid))
@@ -44,12 +45,36 @@ def prog_init():
     signal.signal(signal.SIGINT, sigint_handler)
 
 
+def request_pages():
+    global request_pages_result
+    sites = ("https://www.baidu.com",
+             "https://www.bing.com",
+             "https://www.yahoo.com",
+             "http://www.so.com")
+
+    import requests
+    try:
+        for site in sites:
+            r = requests.get(site)
+            if r.status_code != 200:
+                request_pages_result[site] = False
+            else:
+                request_pages_result[site] = True
+    except Exception as e:
+        print("[Error] request_pages(): ", e, file=sys.stderr)
+
+
 def main():
+    global request_pages_result
     global prog_pid
 
     prog_init()
 
-    signal.alarm(5)
+    # signal.alarm(5)
+
+    request_pages()
+    print(request_pages_result)
+
     i = 0
     circle = ('|', '/', '-', '\\')
     while True:

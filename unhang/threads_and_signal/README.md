@@ -54,3 +54,37 @@ $
 
 ![set-Alarm_SIGALRM](res/set-Alarm_SIGALRM.gif)
 
+
+
+### `unhang_console_by_Threads_SIGALRM.py`
+
+#### Usage
+
+```shell
+$ pyton -c "import requests"
+## run "pip install --user requests" if needed
+$ 
+$ time ./unhang_console_by_Threads_SIGALRM.py 
+```
+
+#### Test Result
+
+- normal coding = console hang example:
+
+```shell
+$ pyton -c "import requests"
+## run "pip install --user requests" if needed
+$ 
+$ time ./unhang_console_by_Threads_SIGALRM.py 
+[Debug] prog_pid <- os.getpid(): 28334
+{'https://www.baidu.com': True, 'https://www.bing.com': True, 'https://www.yahoo.com': True, 'http://www.so.com': True}
+processing... \^C
+
+real    0m17.423s
+user    0m0.268s
+sys	    0m0.026s
+$ 
+```
+
+![console_hang_example](res/console_hang_example.gif)
+
