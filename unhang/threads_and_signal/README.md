@@ -88,3 +88,41 @@ $
 
 ![console_hang_example](res/console_hang_example.gif)
 
+- use Thread, but main-thread wait sub-thread finish, then show the result, still console hang.
+
+  ```shell
+  $ git diff
+  [...]
+  --- a/unhang/threads_and_signal/unhang_console_by_Threads_SIGALRM.py
+  +++ b/unhang/threads_and_signal/unhang_console_by_Threads_SIGALRM.py
+  @@ -19,6 +19,7 @@ import os
+   import signal
+   # from random import randint
+   from time import sleep
+  +import threading
+   
+   
+   request_pages_result = {}
+  @@ -72,8 +73,11 @@ def main():
+   
+       # signal.alarm(5)
+   
+  -    request_pages()
+  -    print(request_pages_result)
+  +    t = threading.Thread(target=request_pages)
+  +    t.setDaemon(True)
+  +    t.start()
+  +    t.join()
+  +    print("request pages result: \n", request_pages_result)
+   
+       i = 0
+       circle = ('|', '/', '-', '\\')
+  $
+  ```
+
+  run `$ time ./unhang_console_by_Threads_SIGALRM.py` just look like the same.
+
+
+
+
+

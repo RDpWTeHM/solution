@@ -19,6 +19,7 @@ import os
 import signal
 # from random import randint
 from time import sleep
+import threading
 
 
 request_pages_result = {}
@@ -72,8 +73,11 @@ def main():
 
     # signal.alarm(5)
 
-    request_pages()
-    print(request_pages_result)
+    t = threading.Thread(target=request_pages)
+    t.setDaemon(True)
+    t.start()
+    t.join()
+    print("request pages result: \n", request_pages_result)
 
     i = 0
     circle = ('|', '/', '-', '\\')
