@@ -155,6 +155,12 @@ $ python ./unhang_GUI_by_Threads.py
 
   ![python-GUI-button_and_showTextonEntry](res/python-GUI-button_and_showTextonEntry_Screencast_2018-11-30_1414.gif)
 
+- GUI hang demo
+
+  Note: this run on Windows system, the phenomenon of hang can't be able to reproduce on Ubuntu.
+
+  ![python-GUI_press-button_hang_example](res/python-GUI_press-button_hang_example.gif)
+
 
 
 

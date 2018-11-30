@@ -6,6 +6,9 @@ import tkinter as tk
 import sys
 
 
+request_pages_result = {}
+
+
 def quit():
     print("I will quit!")
     sys.exit()
@@ -20,6 +23,25 @@ def show():
     print("Press Show button")
     entry.delete(0, tk.END)
     entry.insert(0, "Button Clicked!")
+
+    global request_pages_result
+    sites = ("https://www.baidu.com",
+             "https://www.bing.com",
+             "https://www.yahoo.com",
+             "http://www.so.com")
+
+    import requests
+    try:
+        for site in sites:
+            r = requests.get(site)
+            if r.status_code != 200:
+                request_pages_result[site] = False
+            else:
+                request_pages_result[site] = True
+    except Exception as e:
+        print("[Error] request_pages(): ", e, file=sys.stderr)
+
+    show_request_pages_reslut()
 
 
 def show_request_pages_reslut():
