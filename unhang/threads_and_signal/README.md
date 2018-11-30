@@ -122,6 +122,11 @@ $
 
   run `$ time ./unhang_console_by_Threads_SIGALRM.py` just look like the same.
 
+- use threads, no `.join()` , catch "Ctrl+C" before quit program, show the result. 
+
+  so, if run time is short, the function will not finish (`t.setDaemon(True)` must require). we can see different result if "processing" time is short and long.
+
+  ![threads_half_unhang](res/threads_half_unhang.gif)
 
 
 

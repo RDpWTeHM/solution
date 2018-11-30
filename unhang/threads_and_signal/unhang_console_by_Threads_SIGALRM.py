@@ -37,7 +37,9 @@ def sigalrm_handler(signo, frame):
 
 def sigint_handler(signo, frame):
     ''' end program'''
-    print("")
+    global request_pages_result
+    print("\nGoodbay Cruel World.....")
+    print("before exit program, show you the result:\n", request_pages_result)
     raise SystemExit(0)
 
 
@@ -76,7 +78,6 @@ def main():
     t = threading.Thread(target=request_pages)
     t.setDaemon(True)
     t.start()
-    t.join()
     print("request pages result: \n", request_pages_result)
 
     i = 0
