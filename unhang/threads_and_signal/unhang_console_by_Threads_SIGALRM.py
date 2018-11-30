@@ -30,8 +30,10 @@ if __debug__:
 
 def sigalrm_handler(signo, frame):
     ''' time up'''
+    global request_pages_result
     global prog_pid
     print("\nOooooops time up!")
+    print("[sigalrm_handler] request pages result: \n", request_pages_result)
     os.kill(prog_pid, signal.SIGINT)
 
 
@@ -39,7 +41,7 @@ def sigint_handler(signo, frame):
     ''' end program'''
     global request_pages_result
     print("\nGoodbay Cruel World.....")
-    print("before exit program, show you the result:\n", request_pages_result)
+    print("[sigint_handler] before exit program, show you the result:\n", request_pages_result)
     raise SystemExit(0)
 
 
@@ -73,12 +75,11 @@ def main():
 
     prog_init()
 
-    # signal.alarm(5)
-
     t = threading.Thread(target=request_pages)
     t.setDaemon(True)
     t.start()
     print("request pages result: \n", request_pages_result)
+    signal.alarm(5)
 
     i = 0
     circle = ('|', '/', '-', '\\')

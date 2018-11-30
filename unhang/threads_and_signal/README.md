@@ -128,6 +128,15 @@ $
 
   ![threads_half_unhang](res/threads_half_unhang.gif)
 
+- use threads with signal, unhang console.
+
+  ![threads_and_signal_unhang](res/threads_and_signal_unhang.gif)
+
+
+
+
+
+
 
 
 
