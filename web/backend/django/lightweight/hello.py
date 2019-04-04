@@ -14,9 +14,13 @@ from django.urls import path
 from django.http import HttpResponse
 
 
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+
+
 settings.configure(
     DEBUG=True,
     SECRET_KEY='thisisthesecretkey',
+    ALLOWED_HOSTS=ALLOWED_HOSTS,
     ROOT_URLCONF=__name__,
     MIDDLEWARE_CLASSES=(
         'django.middleware.common.CommonMiddleware',
