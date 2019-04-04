@@ -2,13 +2,16 @@
 
 import os
 
-# import djcelery
+import djcelery
 
 
-# djcelery.setup_loader()  # 加载 djcelery
-# BROKER_URL = 'pyamqp://guest@localhost//'
-# BROKER_POOL_LIMIT = 0
-# CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
+djcelery.setup_loader()  # 加载 djcelery
+BROKER_URL = 'pyamqp://guest@localhost//'
+BROKER_POOL_LIMIT = 0
+CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
+
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_CACHE_BACKEND = 'django-cache'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
 
@@ -18,9 +21,10 @@ DEBUG = True
 
 SECRET_KEY = 'thisisthesecretkey'
 
-ROOT_URLCONF = 'add'  # addcalculate/add.py
+ROOT_URLCONF = 'urls'  # addcalculate/urls.py
 
-MIDDLEWARE_CLASSES = (
+# before 1.9: MIDDLEWARE_CLASSES; after 1.9: MIDDLEWARE
+MIDDLEWARE = (
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -38,7 +42,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # 'djcelery',
+    # celery plug
+    'djcelery',  # pip install django-celery
+    'django_celery_results',  # pip install django-celery-results
+
+    # develop application
+    'tools.apps.ToolsConfig',
 )
 
 TEMPLATES = (
@@ -74,6 +83,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+WSGI_APPLICATION = 'wsgi.application'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
