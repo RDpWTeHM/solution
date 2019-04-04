@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Add Calculate|Django with Celery</title>
+    <link rel="stylesheet" href="{% static 'site.css' %}" type="text/css">
+</head>
+<body>
+    <h1>Add Calculate</h1>
+
+    <p>This server can be used for calculating two additive.</p>
+
+    <p>Enter additives in the <b>INPUT</b> place.<br/>
+        Click <b>Calculate</b> to request add.<br/>
+        And click <u><i>Check The Result</i></u> to get the result detail.</p>
+    <br/>
+
+    <form method="POST" action="#">
+        <label>Add 1:</label>
+        <input id="add1" name="add1">
+        <br/>
+
+        <label>Add 2:</label>
+        <input id="add2" name="add2">
+        <br/>
+
+        <button id="btn" name="btn">Calculate</button>
+        <br/>
+        {% csrf_token %}
+    </form>
+
+    <br/>
+    <a href="#">Check The Result</a>
+
+</body>
+</html>
