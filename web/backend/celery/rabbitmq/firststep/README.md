@@ -22,6 +22,25 @@ README.md    tasks.py
 
 ## RUN It
 
+Before run it, make sure:
+
+```shell
+$ sudo rabbitmqctl stop
+$ sudo rabbitmq-server
+...
+#### then run under test ####
+```
+
+run it in the background by adding the -detached option (note: only one dash):
+
+`$ sudo rabbitmq-server -detached` 
+
+> check whether running by port
+>
+> `$ sudo netstat -antp | grep 5672`
+
+
+
 \#### Terminal 1 ####
 
 **Consumer**
