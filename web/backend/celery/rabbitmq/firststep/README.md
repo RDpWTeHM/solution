@@ -2,6 +2,12 @@
 
 **Basic Environment**
 
+## Note
+
+**celery doesn't support Python 3.7 for now**
+
+## Setup
+
 ```powershell
 $ whereis rabbitmq-server
 rabbitmq-server: /usr/sbin/rabbitmq-server
@@ -14,19 +20,18 @@ README.md    tasks.py
 ```
 
 
-
-
+## RUN It
 
 \#### Terminal 1 ####
 
-**Run It**
+**Consumer**
 
 ```powershell
 $ celery -A tasks worker --loglevel=info
 
 ```
 
-**Output/Runing**
+*Output/Runing*
 
 ```powershell
 -------------- celery@hostmachine v4.3.0 (rhubarb)
@@ -54,7 +59,7 @@ $ celery -A tasks worker --loglevel=info
 
 \#### Terminal 2 ####
 
-**Producter**
+**Producer**
 
 ```powershell
 $ python
