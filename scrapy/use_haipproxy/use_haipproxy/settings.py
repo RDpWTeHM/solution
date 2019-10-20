@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'use_haipproxy.spiders'
 #USER_AGENT = 'use_haipproxy (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -52,9 +52,10 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'use_haipproxy.middlewares.UseHaipproxyDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    # 'use_haipproxy.middlewares.UseHaipproxyDownloaderMiddleware': 543,
+    'use_haipproxy.middlewares.IPProxyDownloadMiddleware': 600,
+}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html

@@ -7,6 +7,8 @@
 
 from scrapy import signals
 
+from haipproxy.client.py_cli import ProxyFetcher
+
 
 class UseHaipproxySpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
@@ -101,3 +103,18 @@ class UseHaipproxyDownloaderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+class IPProxyDownloadMiddleware(object):
+    args = dict(host='127.0.0.1', port=6379, password=None, db=0)
+
+    @property
+    def proxy(self):
+        fetcher = ProxyFetcher('http', strategy='greedy',
+                               redis_args=self.args)
+        return fetcher.get_proxy()
+
+    def process_request(self, request, spider):
+        request.meta["proxy"] = self.proxy
+        # pass
+
